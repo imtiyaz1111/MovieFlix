@@ -3,30 +3,31 @@ import queryString from "query-string";
 
 import apiConfig from "./apiConfig";
 
-const axiosIntance = axios.create({
+const axiosInstance = axios.create({
   baseURL: apiConfig.baseUrl,
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZTFjY2MxZjIzZWQ2YTMzYWQ4NmNlZDIzOGMzZTc3MCIsIm5iZiI6MTc0NTEyMzA0NS45MTgwMDAyLCJzdWIiOiI2ODA0NzZlNTAzMzQ0YWVlNzA4OWJmNTkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.QCu3J1Dv5sbYngPhGD2ETQizTFRQ1dwTVTdz8w_-6ck",
   },
   paramsSerializer: (params) =>
     queryString.stringify({ ...params, api_key: apiConfig.apiKey }),
 });
 
-axiosIntance.interceptors.request.use(async (config) => config);
+axiosInstance.interceptors.request.use(
+  async (config) => config,
+  (error) => Promise.reject(error)
+);
 
-axiosIntance.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => {
     if (response && response.data) {
       return response.data;
     }
-
     return response;
   },
   (error) => {
+    console.error("API Error:", error.response?.data || error.message);
     throw error;
   }
 );
 
-export default axiosIntance;
+export default axiosInstance;

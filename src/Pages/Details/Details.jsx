@@ -65,7 +65,7 @@ const Detail = () => {
   const [auth] = useAuth();
 
   useEffect(() => {
-    getDetails(category, id, setItem);
+    getDetails(category, id, { params: {} },setItem);
   }, [category, id]);
 
   const handleOpenModal = async () => {
@@ -74,7 +74,7 @@ const Detail = () => {
       return;
     }
 
-    const videos = await getVideos(id, category);
+    const videos = await getVideos(id, category,{ params: {} });
     if (videos.length > 0) {
       setVideoKey(videos[0].key);
       setOpen(true);

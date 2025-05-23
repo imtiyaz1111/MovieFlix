@@ -8,14 +8,22 @@ import { useNavigate } from "react-router-dom";
 
 import { category } from "../api/tmdbApi";
 import apiConfig from "../api/apiConfig";
-import { getAllMovieList } from "../api/Functions/tmdbApiFunction";
+import { getAllMovieList,getAllTvList } from "../api/Functions/tmdbApiFunction";
 
 const MovieList = (props) => {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    getAllMovieList(props.type, setItems);
+    const params = {};
+
+    if (props.type !== "similar") {
+      if (props.category === category.movie) {
+        getAllMovieList(props.type, setItems, { params });
+      } else {
+        getAllTvList(props.type, setItems, { params });
+      }
+    }
   }, [props.category, props.type, props.id]);
   console.log("listItem", items);
 

@@ -26,7 +26,8 @@ const BannerSlider = () => {
   const [auth] = useAuth();
 
   useEffect(() => {
-    getAllMovieList(movieType.popular, setMovieItems);
+    const params = { page: 1 };
+    getAllMovieList(movieType.popular, setMovieItems,params);
   }, []);
 
   const handleWatchNow = async (movieId) => {

@@ -27,13 +27,14 @@ const fallbackImage =
 const MovieGrid = ({ category: cat }) => {
   const [items, setItems] = useState([]);
   const { keyword } = useParams();
+  const params = {};
 
   const fetchInitialData = async () => {
     if (!keyword) {
       if (cat === category.movie) {
-        await getAllMovieList(movieType.popular, setItems);
+        await getAllMovieList(movieType.popular, setItems, { params });
       } else {
-        await getAllTvList(tvType.popular, setItems);
+        await getAllTvList(tvType.popular, setItems, { params });
       }
     } else {
       const params = { query: keyword, page: 1 };
@@ -44,8 +45,7 @@ const MovieGrid = ({ category: cat }) => {
   useEffect(() => {
     fetchInitialData();
   }, [cat, keyword]);
-  console.log("items",items);
-  
+  console.log("items", items);
 
   return (
     <Box sx={{ bgcolor: "#111", color: "white", minHeight: "100vh", py: 4 }}>
