@@ -6,7 +6,7 @@ import "swiper/css";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-import { category } from "../api/tmdbApi";
+import { category } from "../api/tmdbDataType";
 import apiConfig from "../api/apiConfig";
 import { getAllMovieList,getAllTvList } from "../api/Functions/tmdbApiFunction";
 

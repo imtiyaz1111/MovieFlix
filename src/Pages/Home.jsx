@@ -5,7 +5,7 @@ import { Box, Typography, Button } from "@mui/material";
 
 import BannerSlider from "../components/BannerSlider";
 import MovieList from "../components/MovieList";
-import { category, movieType, tvType } from "../api/tmdbApi";
+import { category, movieType, tvType } from "../api/tmdbDataType";
 
 const Home = () => {
   return (

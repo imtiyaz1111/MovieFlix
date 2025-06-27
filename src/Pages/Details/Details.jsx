@@ -65,7 +65,7 @@ const Detail = () => {
   const [auth] = useAuth();
 
   useEffect(() => {
-    getDetails(category, id, { params: {} },setItem);
+    getDetails(category, id, { params: {} }, setItem);
   }, [category, id]);
 
   const handleOpenModal = async () => {
@@ -74,7 +74,7 @@ const Detail = () => {
       return;
     }
 
-    const videos = await getVideos(id, category,{ params: {} });
+    const videos = await getVideos(id, category);
     if (videos.length > 0) {
       setVideoKey(videos[0].key);
       setOpen(true);
@@ -92,13 +92,17 @@ const Detail = () => {
   return (
     <>
       <Banner
-        background={apiConfig.originalImage(item.backdrop_path || item.poster_path)}
+        background={apiConfig.originalImage(
+          item.backdrop_path || item.poster_path
+        )}
       >
         <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} sm={4}>
               <Poster
-                src={apiConfig.originalImage(item.poster_path || item.backdrop_path)}
+                src={apiConfig.originalImage(
+                  item.poster_path || item.backdrop_path
+                )}
                 alt={item.title || item.name}
               />
             </Grid>
@@ -110,12 +114,7 @@ const Detail = () => {
                 {item.title || item.name}
               </Typography>
 
-              <Stack
-                direction="row"
-                spacing={1}
-                flexWrap="wrap"
-                sx={{ mb: 2 }}
-              >
+              <Stack direction="row" spacing={1} flexWrap="wrap" sx={{ mb: 2 }}>
                 {item.genres?.slice(0, 5).map((genre, i) => (
                   <Chip
                     key={i}

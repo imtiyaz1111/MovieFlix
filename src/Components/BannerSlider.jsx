@@ -12,7 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
-import { category, movieType } from "../api/tmdbApi";
+import { category, movieType } from "../api/tmdbDataType";
 import apiConfig from "../api/apiConfig";
 import { useAuth } from "../Context/AuthProvider";
 import { toast } from "react-toastify";

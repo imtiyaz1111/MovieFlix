@@ -2,7 +2,7 @@ import React from "react";
 
 import { useParams } from "react-router";
 
-import { category as cate } from "../api/tmdbApi";
+import { category as cate } from "../api/tmdbDataType";
 import PageHeader from "../Components/PageHeader";
 import MovieGrid from "../Components/MovieGrid";
 import { Box } from "@mui/material";

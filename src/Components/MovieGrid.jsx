@@ -12,7 +12,7 @@ import {
   CardContent,
 } from "@mui/material";
 
-import { category, movieType, tvType } from "../api/tmdbApi";
+import { category, movieType, tvType } from "../api/tmdbDataType";
 import apiConfig from "../api/apiConfig";
 import {
   getAllMovieList,
@@ -38,7 +38,7 @@ const MovieGrid = ({ category: cat }) => {
       }
     } else {
       const params = { query: keyword, page: 1 };
-      await getSearch(cat, setItems, null, { params });
+      await getSearch(cat, setItems, { params });
     }
   };
 

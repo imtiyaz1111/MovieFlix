@@ -1,8 +1,12 @@
-import tmdbApi from "../../api/tmdbApi";
+import axiosInstance from "../../api/axiosIntance";
+import { category } from "../../api/tmdbDataType";
 
-export const getVideos = async (id, category) => {
+export const getVideos = async (id, cate) => {
   try {
-    const response = await tmdbApi.getVideos(category, id);
+    const response = await axiosInstance.get(
+      category[cate] + "/" + id + "/videos",
+      { params: {} }
+    );
     return response.results || [];
   } catch (error) {
     console.error("Failed to fetch video:", error);

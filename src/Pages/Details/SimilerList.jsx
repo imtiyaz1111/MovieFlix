@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useNavigate } from "react-router-dom";
 
-import { category as categoryMap } from "../../api/tmdbApi";
+import { category as categoryMap } from "../../api/tmdbDataType";
 import apiConfig from "../../api/apiConfig";
 import { getSimilar } from "../../api/Functions/tmdbApiFunction";
 
